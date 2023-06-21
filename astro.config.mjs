@@ -7,5 +7,5 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   site:'https://github.com/jcarvajal1987',
-  base:'dist'
+  base:'/dist'
 });
