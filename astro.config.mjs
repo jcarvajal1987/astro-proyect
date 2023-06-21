@@ -6,5 +6,10 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  outDir: './docs'
+  outDir: './docs',
+  base:'astro-proyect',
+  build: {
+    // Example: Generate `page.html` instead of `page/index.html` during build.
+    format: 'file'
+  }
 });
