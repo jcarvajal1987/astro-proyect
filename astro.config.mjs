@@ -9,7 +9,6 @@ export default defineConfig({
   outDir: './docs',
   // base:'astro-proyect',
   build: {
-    // Example: Generate `page.html` instead of `page/index.html` during build.
     format: 'file',
     assets: 'assests',
     assetsPrefix: '.'

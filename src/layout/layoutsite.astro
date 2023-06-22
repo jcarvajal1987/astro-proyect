@@ -1,12 +1,13 @@
 ---
 // import BaseHead from '../components/BaseHead.astro';
 // import Footer from '../components/Footer.astro';
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <BaseHead title={title}/> -->
   </head>
   <body>
@@ -15,43 +16,69 @@ const { title } = Astro.props
       <a href="./post.html">Posts</a>
       <a href="#">Contact</a>
     </nav>
-    <h1>{title}</h1>
-    <article>
-        <style>
-            .fader {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  z-index: 999;
-  animation-duration: 200ms;
-  animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-.fader.fade-in {
-  opacity: 1;
-  animation-name: fade-in;
-}
-.fader.fade-out {
-  opacity: 0;
-  animation-name: fade-out;
-}
-@keyframes fade-out {
-    from { opacity: 1; }
-      to { opacity: 0; }
-}
-@keyframes fade-in {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-        </style>
-      <slot /> <!-- your content is injected here -->
-    </article>
-    <!-- <Footer /> -->
-    <script>
-        
+    <main id="swup" class="transition-fade">
+      <h1>{title}</h1>
+      <article>
+        <slot />
+        <!-- your content is injected here -->
+      </article>
+    </main>
+    <script src="https://unpkg.com/swup@3"></script>
+    <script type="module">
+      import Swup from "https://unpkg.com/swup@3?module";
+      const swup = new Swup();
     </script>
+    <style>
+      h1 {
+        color: red;
+      }
+      .transition-fade {
+        transition: 0.4s;
+        opacity: 1;
+      }
+
+      html.is-animating .transition-fade {
+        opacity: 0;
+      }
+      .fader {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        z-index: 999;
+        animation-duration: 200ms;
+        animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      }
+      .fader.fade-in {
+        opacity: 1;
+        animation-name: fade-in;
+      }
+      .fader.fade-out {
+        opacity: 0;
+        animation-name: fade-out;
+      }
+      @keyframes fade-out {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <!-- <Footer /> -->
+    <script></script>
   </body>
 </html>
